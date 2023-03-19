@@ -1,5 +1,6 @@
+alias_school/db.sqlite3
 config.py
-alias_school\db.sqlite3
-alias_school\pages\migrations
 venv
 __pycache__
+migrations
+.alias_school\pages\static
