@@ -1,10 +1,11 @@
 from django.urls import include, path, re_path
-from .views import HomePageView, TeacherViewSet, GroupViewSet
+from .views import ClassTimeViewSet, HomePageView, TeacherViewSet, GroupViewSet
 from rest_framework import routers
 
 router = routers.DefaultRouter()
 router.register(r'teacher', TeacherViewSet)
 router.register(r'group', GroupViewSet)
+router.register(r'classtime', ClassTimeViewSet)
 print(router.urls)
 
 

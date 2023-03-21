@@ -41,10 +41,11 @@ class Group(models.Model):
         return f'{self.name} учитель: {self.teacher.first_name} {self.teacher.last_name} класс(ы): {self.grade_in()}'
     
     def grade_in(self):
-        grades = GroupGrade.objects.filter(group=self.pk).all()
+        """Получаем текстом список классов который учатся в этой группе (0 1 2)"""
+        grades = GroupGrade.objects.filter(group=self.pk).all().values('grade__name').order_by('grade__name')
         grade_list = ''
         for grade in grades:
-            grade_list += f'{str(grade.grade.name)} '
+            grade_list += f"{str(grade['grade__name'])} "
         return grade_list.strip()
     
     def text(self):
@@ -91,3 +92,4 @@ class ClassTime(models.Model):
 
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
     class_room = models.ForeignKey(ClassRoom, on_delete=models.CASCADE)
+        
