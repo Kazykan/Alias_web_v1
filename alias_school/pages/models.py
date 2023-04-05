@@ -83,6 +83,9 @@ class ClassRoom(models.Model):
     location = models.CharField(max_length=20)
     description = models.TextField(blank=True, null=True, verbose_name='Описание')
 
+    def __str__(self):
+        return self.name
+
 
 class ClassTime(models.Model):
     """Время занятий, занятия могут идти одна за одной"""
